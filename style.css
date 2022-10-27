@@ -1,16 +1,36 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkgray;
+}
 
+#content {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+}
 
 #container {
     display:grid;
-    grid-template-columns:repeat(16, 1fr) ;
-    width: 20%;
-    margin:auto;
-    padding-top:200px;
+    grid-template-columns:repeat(var(--grid-cols), 1fr) ;
+    width: 500px;
+    height: 500px;
+    border: 2px solid black;
+    background-color: #ffffff;
 }
 
 .griditems {
-    border: 1px solid grey;
+    min-height: 1em;
 }
+
+
 
 .color {
     background-color: aqua;
