@@ -20,16 +20,16 @@ body {
 #container {
     display:grid;
     grid-template-columns:repeat(var(--grid-cols), 1fr) ;
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
     width: 500px;
-    height: 500px;
+    aspect-ratio: 1;
     border: 2px solid black;
     background-color: #ffffff;
 }
 
-.griditems {
-    min-height: 1em;
+.showgrid {
+    border: 1px solid #F7F0EF;
 }
-
 
 
 .color {
