@@ -31,3 +31,23 @@ body {
     border: 1px solid #F7F0EF;
 }
 
+.color {
+    background-color: aquamarine;
+}
+
+.black {
+    background-color: black;
+}
+
+.button {
+
+}
+
+.button:hover {
+    background-color: #F7F0EF;
+}
+.button:active {
+    border:2px;
+}
+
+
