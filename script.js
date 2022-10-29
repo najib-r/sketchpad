@@ -18,9 +18,8 @@ toggle.addEventListener('click', toggleGrid);
 
 
 let mouseDown = false
-document.body.onmousedown = () => (mouseDown = true)
-document.body.onmouseup = () => (mouseDown = false)
-
+container.addEventListener('mousedown', () => (mouseDown = true));
+container.addEventListener('mouseup', () => (mouseDown = false));
 
 function generateGrid (number) {
     for (i=0;i<(number*number);i++) {
@@ -31,7 +30,9 @@ function generateGrid (number) {
     const gridItems = document.querySelectorAll("div.griditems");
     for (let i = 0; i < gridItems.length; i++) {
         gridItems[i].addEventListener('mouseover', () => {
-            gridItems[i].classList.add('color');
+            if (mouseDown === true) {
+                gridItems[i].classList.add('color');
+            }
         });
     }
     container.style.setProperty('--grid-cols', cols);
@@ -44,26 +45,15 @@ function changeGrid () {
     reloadGrid();
 }
 
-
 function changeSize () {
     do {
         cols = prompt("Please enter a grid size of not more than 100.");
     } while (cols > 100 || cols === "");
-    
-    console.log(cols);
 }
 
 function reloadGrid() {
     container.innerHTML='';
-    console.log(cols);
     generateGrid(cols);
-    const gridItems = document.querySelectorAll("div.griditems");
-    for (let i = 0; i < gridItems.length; i++) {
-        gridItems[i].addEventListener('mouseover', () => {
-            gridItems[i].classList.add('color');
-        });
-    }
-
 }
 
 function toggleGrid() {
