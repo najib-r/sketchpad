@@ -1,11 +1,8 @@
 const container = document.getElementById('container');
 
-
+//Default - 16x16 grid
 let cols = 16;
 generateGrid (cols);
-container.style.setProperty('--grid-cols', cols);
-container.style.setProperty('--grid-rows', cols);
-
 
 const reset = document.getElementById('reset');
 reset.addEventListener('click', reloadGrid); 
@@ -20,6 +17,7 @@ toggle.addEventListener('click', toggleGrid);
 let mouseDown = false
 container.addEventListener('mousedown', () => (mouseDown = true));
 container.addEventListener('mouseup', () => (mouseDown = false));
+container.addEventListener('mouseleave', () => (mouseDown = false));
 
 function generateGrid (number) {
     for (i=0;i<(number*number);i++) {
@@ -29,9 +27,13 @@ function generateGrid (number) {
     }
     const gridItems = document.querySelectorAll("div.griditems");
     for (let i = 0; i < gridItems.length; i++) {
+        var colors = ['#ff0000', '#00ff00', '#0000ff'];
+        var random_color = colors[Math.floor(Math.random()*colors.length)];
+
         gridItems[i].addEventListener('mouseover', () => {
             if (mouseDown === true) {
-                gridItems[i].classList.add('color');
+                //gridItems[i].classList.add('color');
+                gridItems[i].style.backgroundColor = random_color;
             }
         });
     }
