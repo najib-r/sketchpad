@@ -16,11 +16,15 @@ gridsize.addEventListener('click', changeGrid);
 const toggle = document.getElementById('toggle');
 toggle.addEventListener('click', toggleGrid);
 
+const picker = document.getElementById('color');
 const black = document.getElementById('black');
-black.addEventListener('click', () => (cursor='black'));
+black.addEventListener('click', () => (cursor='black', picker.style.backgroundColor="black"));
 
 const random = document.getElementById('random');
-random.addEventListener('click', () => (cursor = 'random'));
+random.addEventListener('click', () => (cursor = 'random', picker.style.backgroundColor="#" + Math.floor(Math.random()*16777215).toString(16)));
+
+const eraser = document.getElementById('eraser');
+eraser.addEventListener('click', () => (cursor = 'eraser', picker.style.backgroundColor="white"));
 
 
 
@@ -73,11 +77,14 @@ function changeColor () {
         gridItems[i].addEventListener('mouseover', () => {
             if (mouseDown === true) {
                 if (cursor === 'black') {
-                    gridItems[i].classList.add('black');
+                    gridItems[i].style.backgroundColor = "#000000";
                 }
-                else { 
+                else if (cursor === 'random') { 
                     const randomColor = Math.floor(Math.random()*16777215).toString(16);
                     gridItems[i].style.backgroundColor = "#" + randomColor;
+                } 
+                else {
+                    gridItems[i].style.backgroundColor = "#FFFFFF";
                 }
             }
         });
